@@ -122,7 +122,18 @@ BigDecimal b = new BigDecimal(check);
 // ---
 
 
-// 1-13
+/*
+請利用克萊姆(Cramer)公式，嘗試解出2*2的線性方程式
+ax + by = e
+cx + dy = f
+輸入：
+輸入a b e 
+與 c d f 分別代表兩個線性方程式的常數與答案
+其形態皆為double
+輸出：
+請利用Cramer解出x與y二值
+其形態皆為double
+*/
 
 package com.company;
 
@@ -157,7 +168,13 @@ public class Main {
 }
 // ---
 
-//  Chapter 2-6
+/*
+請撰寫一個程式，讀取0-1000其中一位數，然後將其的每一位數相乘。
+輸入
+為一介於0<= num <=1000的Integer
+輸出
+形態為Integer
+*/
 
 package com.company;
 
@@ -195,7 +212,17 @@ public class Main {
         }
 // ---
 
-//  Chapter 2-15
+/*
+請撰寫一個程式，提示使用者輸入兩點座標(x1,y1)及(x2,y2)，並顯示兩點間的距離。 請注意，您可以利用Math.pow(a,0.5)來計算√a。
+輸入
+x1,y1: 1.5 -3.4
+x2,y2: 4 5
+輸出
+8.764131445842194
+ 
+計算兩點間距離的公式為
+(x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) 開根號
+*/
 
 import java.util.Scanner;
 
@@ -218,7 +245,19 @@ public class Main {
 }
 // ---
 
-//  2-19
+/*
+請撰寫一程式，提示使用者輸入三角形的三個頂點座標(x1,y1)、(x2,y2)、(x3,y3)，並顯示計算後面積。計算三角形面積公式如下:
+
+底 * 高 / 2
+
+輸入
+三角形三個點: 1.5 -3.4 4.6 5 9.5 -3.4
+輸出
+面積為33.600
+ 
+-----*輸出格式為小數點後三位*----
+-----*若三點不為三角形請輸出"Not Triangle"*----
+*/
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -275,9 +314,10 @@ public class Main {
 
 // ---
 
-- hypot
-
-//  primelist
+/*
+Write a program to input an integer N and print all prime numbers less than N.
+Please print 10 prime numbers in each line.
+*/
 
 package com.company;
 
@@ -322,7 +362,9 @@ public class Main {
 }
 // ---
 
-//  3-11
+/*
+請撰寫一程式，提示使用者輸入月份與年份，接著顯示該月份的天數。 舉個例子，如果使用者月份輸入2，年份輸入2012，此程式應顯示"February 2012 had 29 days"。如果使用者月份輸入3，年份輸入2015，程式顯示"March 2015 had 31 days"。
+*/
 
 package com.company;
 
@@ -367,3 +409,272 @@ public class Main {
     }
 }
 // ---
+
+/*
+請撰寫一個程式，提示使用者輸入一個點座標(x,y)，接著檢視該點座標是否位於中心點(0,0)，半徑為10的圓內(<=10)。
+計算距離的公式
+
+(x*x + y*y) 開根號
+
+輸入
+4 5
+9 9
+輸出
+(4.0,5.0) is in the circle
+(9.0,9.0) is not in the circle
+*/
+import java.util.Scanner;  
+  
+public class Main {  
+  
+    public static void main(String[] args) {  
+        Scanner input = new Scanner(System.in);  
+        double x = input.nextDouble();  
+        double y = input.nextDouble();  
+  
+        //是否在半徑 10 以內  
+        if( Math.sqrt( Math.pow(x, 2) + Math.pow(y, 2) ) <= 10 ){  
+            // 如果要輸出 ("%f %d", a, b) 要用 -> System.out.printf  
+            // %.1f 控制小數點後 1 位  
+            System.out.printf("(%.1f,%.1f) is in the circle" ,x ,y);  
+        }  
+        else{  
+            System.out.printf("(%.1f,%.1f) is not in the circle" ,x ,y);  
+        }  
+        System.out.println();  
+    }  
+}  
+// ---
+
+// 寫一個程式,使其依照輸入的列數來輸出一個金字塔,輸出結果必須如下:
+import java.util.Scanner;  
+  
+public class Main {  
+  
+    public static void main(String[] args) {  
+        Scanner input = new Scanner(System.in);  
+        int n = input.nextInt();  
+  
+        for( int i = 1; i <= n; i++ ){  
+  
+            for( int j = n-i; j > 0; j-- ){  
+                System.out.printf(" ");  
+            }  
+  
+            for( int j = 0; j < i; j++ ){  
+                System.out.printf("*");  
+            }  
+            for( int j = 1; j < i; j++ ){  
+                System.out.printf("*");  
+            }  
+  
+            System.out.println();  
+  
+        }  
+    }  
+}  
+// ---
+
+/* 請列出所有九九乘法表。
+example:
+1 * 1 = 1 1 * 2 = 2 1 * 3 = 3 1 * 4 = 4 1 * 5 = 5 ... 1 * 9 = 9\n
+*每個公式中間都有一個空格
+*每行最後都沒有空格，但有換行符號
+*每個公式的答案都是 %2d <-重點
+*可以利用System.out.printf(String , value ,......);
+*/
+public class Main {  
+  
+    public static void main(String[] args) {  
+  
+        for( int i = 1; i < 10; i++ ){  
+            for( int j = 1; j < 10; j++ ){  
+  
+                if( j == 9 ){  
+                    System.out.printf( "%d * %d = %2d\n", i, j, i * j );  
+                    continue;  
+                }  
+                  
+                System.out.printf( "%d * %d = %2d ", i, j, i * j );  
+  
+            }  
+        }  
+  
+    }  
+}  
+// ---
+
+/* 請輸入一個Integer並輸出小於其的所有質數
+每行答案中間都有空格
+每行最後都為換行符號(沒有空格)
+*/
+import java.util.*;  
+  
+public class Main {  
+  
+    public static void main(String[] args) {  
+  
+        Scanner input = new Scanner(System.in);  
+        int n = input.nextInt();  
+  
+        boolean prime[] = new boolean[1000];  
+  
+        // java 的 vector 寫法似乎是如此 :D  
+        // <> 內不能寫 int 要寫 Integer  
+        Vector<Integer> v = new Vector();  
+  
+        // Arrays.fill 類似 C++ 的 memset( a, false, sizeof(a) );  
+        Arrays.fill( prime,false );  
+  
+        for( int i = 2; i < n; i++ ){  
+            if( !prime[i] ){  
+  
+                for( int j = i * i; j < n; j += i ){  
+                    prime[j] = true;  
+                }  
+                // 像 C++ 的 v.push_back(i)  
+                v.add(i);  
+  
+            }  
+        }  
+  
+        int i;  
+        for( i = 0; i < v.size()-1; i++ ){  
+  
+            // 不能直接寫 v[i] 要寫 v.get(i)  
+            System.out.printf( "%d ", v.get(i) );  
+              
+        }  
+        System.out.printf( "%d\n", v.get(i) );  
+  
+    }  
+}  
+// ---
+
+/*
+你的任務是，給你一個正整數 N，判定它是否是 11 的倍數。
+
+Input
+每列資料有一個正整數N，N 最大可能到 1000 位數。
+若 N = 0 代表輸入結束。
+
+Output
+對每個輸入的數，輸出是否為 11 的倍數。輸出格式請參考 Sample Output。
+*/
+import java.util.Scanner;  
+  
+public class Main {  
+  
+    public static void main(String[] args) {  
+  
+        Scanner input = new Scanner(System.in);  
+  
+        // java 中要用 .hasNext() 來判斷是否輸入結束  
+        while( input.hasNext() ){  
+  
+            // String 的 input 是 .nextLine()  
+            String str = input.nextLine();  
+  
+            // java 用 == 進行比較的時候，比較的是他們在記憶體中的存放地址  
+            // 而 String,Integer,Date 這些類中 equals 可以用來做比較  
+            if( str.equals("0") ){  
+                break;  
+            }  
+  
+            boolean flag = false;  
+            int first = 0, second = 0;  
+            for( int i = 0; i < str.length(); i++ ){  
+  
+                if( flag ){  
+                    first += Integer.parseInt( String.valueOf( str.charAt(i) ) );  
+                    flag = false;  
+                }  
+                else{  
+                    second += Integer.parseInt( String.valueOf( str.charAt(i) ) );  
+                    flag = true;  
+                }  
+            }  
+  
+            // java 的 abs 前面要加 Math.  
+            if( Math.abs( first - second ) % 11 == 0 ){  
+                System.out.printf("%s is a multiple of 11.\n", str );  
+            }  
+            else{  
+                System.out.printf("%s is not a multiple of 11.\n", str );  
+            }  
+        }  
+  
+    }  
+}  
+// ---
+
+/*
+為了要便於中序轉後序的程式運行，請先將算式的數字與運算符號做分割
+程式要求 (未依規定，程式以0分計並扣學期總分2分)
+1. 使用String類別 & 字串輸入
+2. 使用StringTokenizer類別 或 String類別之split()method來切割中序運算式。
+3. 使用String［］array 儲存所有tokens。
+4. 將數字token轉換成實數，加總後輸出總和。Hint: Use BigDecimal in java.math package
+
+
+輸入
+       
+        每組測資會給予不一定長度的算式，符號包含+,-,*,/,(,),%，算式中數字可以是實數或整數型態。 
+
+輸出
+      第一行輸出運算式的每個運算元，運算元間以空格字元隔開。
+       第二行輸出運算式的每個運算子，運算子間以空格字元隔開。
+       第三行印出運算元的總和，小事點以下印三位。
+
+*/
+
+import java.math.BigDecimal;  
+import java.math.RoundingMode;  
+import java.util.Scanner;  
+  
+public class Main {  
+  
+    public static void main(String[] args) {  
+        Scanner input = new Scanner(System.in);  
+        String str = input.nextLine();  
+        String token = "+-*/()%";  
+  
+        // 當字串中帶有 + * | \ 等符號時要寫 \\ 轉義，因為他們在正則表達示中有相應的不同意義  
+        // limit is 0; array contains all substrings  
+        // Positive Lookahead or Lookbehind 觀念  
+        // “((?=@)|(?<=@))” -> 才會把 運算子 還有 運算元 都單獨切開  
+        String[] array = str.split("((?=\\+|-|\\*|/|\\)|\\(|%)|(?<=\\+|-|\\*|/|\\)|\\(|%))",0);  
+  
+        // 預設 ans 賦值 可控制小數點位數 ex 0.000 -> 小數點後三位  
+        BigDecimal ans = new BigDecimal("0.000");  
+  
+        boolean flag = true;  
+        for( String check : array){  
+            // string.contains 一次查詢多個關鍵字的寫法 要另外存一個數組 token  
+            // 且在查詢時要以此 for ( String check : array ) 去做掃描  
+            if( !token.contains(check) ){  
+                // 將字串型態的數字轉成實數並相加  
+                BigDecimal b = new BigDecimal(check);  
+                // (boolean 判斷式) ? (true的輸出) : (false 的輸出)  
+                System.out.print( flag ? check : " " + check);  
+                flag = false;  
+  
+                // BigDecimal 內建 .add 可以直接相加  
+                ans = ans.add(b);  
+            }  
+        }  
+        System.out.println();  
+  
+        flag = true;  
+        for( String again : array){  
+            if( token.contains(again) ){  
+                System.out.print( flag ? again : " " + again);  
+                flag = false;  
+            }  
+        }  
+        System.out.println();  
+          
+        // BigDecimal 四捨五入的寫法 .setScale( 想要留取的位數, RoundingMode.HALF_UP)  
+        System.out.println(ans.setScale(3, RoundingMode.HALF_UP));  
+    }  
+}  
