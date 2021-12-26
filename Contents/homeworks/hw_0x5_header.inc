@@ -1,4 +1,4 @@
-INCLUDE Irvine32.inc	; include Irvine32.inc 進 main.asm 和 gcd.asm
+INCLUDE Irvine32.inc
 
 input PROTO,
 	n: DWORD

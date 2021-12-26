@@ -26,7 +26,7 @@ begin:
 	push eax							; 把 n 存進 stack 為了傳給其他 .asm
 	mov N, eax
 
-	call ainput
+	call input
 
 	cmp flag, 0
 	je noendl
